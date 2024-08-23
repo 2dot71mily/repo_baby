@@ -1,0 +1,5 @@
+FROM python:3
+RUN git clone https://github.com/2dot71mily/baby_repo
+RUN cd baby_repo && pip3 install -r requirements.txt
+WORKDIR baby_repo
+CMD ["python3", "-m", "unittest", "discover" ]
