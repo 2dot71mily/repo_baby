@@ -38,8 +38,8 @@ class TestChainOperations(unittest.TestCase):
     def test_chain_operations_zero_division(self):
         x, y = 10, 0
         operations = [add, multiply, divide]
-        # with self.assertRaises(ValueError):
-        chain_operations(x, y, operations)
+        with self.assertRaises(ValueError):
+            chain_operations(x, y, operations)
 
 
 if __name__ == "__main__":
