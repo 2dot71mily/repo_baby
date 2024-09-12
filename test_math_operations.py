@@ -1,5 +1,6 @@
 import unittest
-from math_operations import add, subtract, multiply, divide
+from math_operations import add, subtract, multiply, divide, chain_operations
+
 
 class TestMathOperations(unittest.TestCase):
     def test_add(self):
@@ -26,5 +27,20 @@ class TestMathOperations(unittest.TestCase):
         with self.assertRaises(ValueError):
             divide(5, 0)
 
-if __name__ == '__main__':
+
+class TestChainOperations(unittest.TestCase):
+    def test_chain_operations(self):
+        x, y = 10, 5
+        operations = [add, multiply, subtract, divide]
+        expected_result = ((10 + 5) * 5 - 5) / 5
+        self.assertAlmostEqual(chain_operations(x, y, operations), expected_result)
+
+    def test_chain_operations_zero_division(self):
+        x, y = 10, 0
+        operations = [add, multiply, divide]
+        with self.assertRaises(ValueError):
+            chain_operations(x, y, operations)
+
+
+if __name__ == "__main__":
     unittest.main()
